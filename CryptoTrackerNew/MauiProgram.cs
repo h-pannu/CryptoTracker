@@ -21,6 +21,9 @@ namespace CryptoTrackerNew
             builder.Services.AddSingleton<CryptoViewModel>();
             builder.Services.AddSingleton<MainPage>();
 
+            builder.Services.AddTransient<CryptoDetailslViewModel>();
+            builder.Services.AddTransient<CryptoDetails>();
+
             return builder.Build();
         }
     }

@@ -44,7 +44,7 @@ namespace CryptoTrackerNew.ViewModel
             }
             catch ( Exception ex)
             {
-                Debug.WriteLine($"Unable to get monkeys: {ex.Message}");
+                Debug.WriteLine($"Unable to get cryptos: {ex.Message}");
                 await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
             }
             finally

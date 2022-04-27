@@ -1,5 +1,6 @@
 namespace CryptoTrackerNew.View;
 using CryptoTrackerNew.ViewModel;
+using CryptoTrackerNew.Model;
 
 public partial class MainPage : ContentPage
 {
@@ -9,8 +10,16 @@ public partial class MainPage : ContentPage
 		BindingContext = cryptoViewModel;
 	}
 
-    private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
     {
+		var crypto = ((VisualElement)sender).BindingContext as Crypto;
 
-    }
+		if (crypto == null)
+			return;
+
+		await Shell.Current.GoToAsync(nameof(CryptoDetails), true, new Dictionary<string, object>
+		{
+			{"Crypto", crypto }
+		});
+	}
 }

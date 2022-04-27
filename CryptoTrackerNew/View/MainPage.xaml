@@ -13,7 +13,7 @@
         ColumnSpacing="5"
         RowDefinitions="*,Auto"
         RowSpacing="0"
-        >
+        BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
         <RefreshView
             Grid.ColumnSpan="2"
             Command="{Binding GetCryptoCommand}"
@@ -21,8 +21,7 @@
             <CollectionView
                 ItemsSource="{Binding Cryptos}"
                 BackgroundColor="Transparent"
-                SelectionChanged="CollectionView_SelectionChanged"
-                SelectionMode="Single">
+                SelectionMode="None">
                 <!--<CollectionView.EmptyView>
                     <StackLayout Padding="100">
                         <Image
@@ -38,6 +37,9 @@
                     <DataTemplate x:DataType="model:Crypto">
                         <Grid Padding="10,5">
                             <Frame HeightRequest="125" Style="{StaticResource CardView}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Frame.GestureRecognizers>
                                 <Grid Padding="0" ColumnDefinitions="125,*">
                                     <Image
                                         Aspect="AspectFill"
@@ -65,17 +67,8 @@
             Margin="8"
             Command="{Binding GetCryptoCommand}"
             IsEnabled="{Binding IsNotBusy}"
-            Text="Get Cryptos" />
-
-        <!--  Add this  -->
-        <!--<Button
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="8"
-            Command="{Binding GetClosestMonkeyCommand}"
-            IsEnabled="{Binding IsNotBusy}"
             Style="{StaticResource ButtonOutline}"
-            Text="Find Closest" />-->
+            Text="Get Cryptos" />
 
 
         <ActivityIndicator
